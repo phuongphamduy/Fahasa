@@ -30,11 +30,10 @@ public class Book implements Serializable {
 	private Integer discount;
 	private String description;
 	private Integer stock;
+	private String image;
+	@OneToMany(mappedBy = "book")
+	List<Cat> cats;
 	@ManyToOne
-	@JoinColumn(name = "subcategoryid")
-	SubCategory subcategory;
-	@OneToMany(mappedBy = "book")
-	List<OrderDetail> orderdetails;
-	@OneToMany(mappedBy = "book")
-	List<Review> reviews;
+	@JoinColumn(name = "productid")
+	Product product;
 }

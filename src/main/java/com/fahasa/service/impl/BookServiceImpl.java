@@ -1,7 +1,9 @@
 package com.fahasa.service.impl;
 
-import com.fahasa.service.BookService;
+import org.springframework.stereotype.Service;
 
+import com.fahasa.service.BookService;
+@Service
 public class BookServiceImpl implements BookService {
 
 }

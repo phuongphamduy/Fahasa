@@ -14,20 +14,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "OrderDetails")
-public class OrderDetail implements Serializable {
+@Table(name = "schooltools")
+public class SchoolTool implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private Integer quantity;
-	private Double price;
-	@ManyToOne
-	@JoinColumn(name = "orderid")
-	Order order;
+	Integer id;
+	String title;
+	String brand;
+	Double price;
+	Integer discound;
+	String description;
+	String image;
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
+	@ManyToOne
+	@JoinColumn(name = "categoryid")
+	Category category;
 }

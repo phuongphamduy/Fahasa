@@ -28,8 +28,7 @@ public class Review implements Serializable {
 	@JoinColumn(name = "userid")
 	User user;
 	@ManyToOne
-	@JoinColumn(name = "bookid")
-	Book book;
-	
+	@JoinColumn(name = "productid")
+	Product product;
 	
 }

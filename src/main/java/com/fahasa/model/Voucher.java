@@ -8,10 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -23,23 +20,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Orders")
-public class Order implements Serializable{
+@Table(name = "Voucher")
+public class Voucher implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	Integer id;
+	String code;
 	@Temporal(TemporalType.DATE)
-	private Date orderdate;
-	private Double totalamount;
-	@ManyToOne
-	@JoinColumn(name = "userid")
-	User user;
-	@OneToOne
-	@JoinColumn(name = "statussid")
-	Statuss statuss;
-	@ManyToOne
-	@JoinColumn(name = "voucherid")
-	Voucher voucher;
-	@OneToMany(mappedBy = "order")
-	List<OrderDetail> orderdetails;
+	Date expdate;
+	Integer valuev;
+	String condition;
+	Boolean active;
+	Integer quantity;
+	@OneToMany(mappedBy = "voucher")
+	List<Order> orders;
 }

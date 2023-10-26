@@ -1,7 +1,9 @@
 package com.fahasa.service.impl;
 
-import com.fahasa.service.AuthorityService;
+import org.springframework.stereotype.Service;
 
+import com.fahasa.service.AuthorityService;
+@Service
 public class AuthorityServiceImpl implements AuthorityService {
 
 }

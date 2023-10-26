@@ -1,7 +1,9 @@
 package com.fahasa.service.impl;
 
-import com.fahasa.service.ReviewService;
+import org.springframework.stereotype.Service;
 
+import com.fahasa.service.ReviewService;
+@Service
 public class ReviewServiceImpl implements ReviewService {
 
 }
