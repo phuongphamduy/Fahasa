@@ -3,6 +3,10 @@ package com.fahasa.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,8 +30,10 @@ public class Category implements Serializable {
 	private Integer id;
 	private String categoryname;
 	private Integer level;
+	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<Cat> cats;
+	@JsonBackReference
 	@OneToMany(mappedBy = "category")
 	List<SchoolTool> schooltools;
 	@ManyToOne

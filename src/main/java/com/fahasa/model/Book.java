@@ -3,6 +3,9 @@ package com.fahasa.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,10 +32,11 @@ public class Book implements Serializable {
 	private Double price;
 	private Integer discount;
 	private String description;
-	private Integer stock;
-	private String image;
+	private String images;
+	@JsonBackReference
 	@OneToMany(mappedBy = "book")
 	List<Cat> cats;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
