@@ -30,10 +30,10 @@ public class Category implements Serializable {
 	private Integer id;
 	private String categoryname;
 	private Integer level;
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "category")
 	List<Cat> cats;
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(mappedBy = "category")
 	List<SchoolTool> schooltools;
 	@ManyToOne

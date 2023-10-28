@@ -2,6 +2,8 @@ package com.fahasa.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +26,11 @@ public class Review implements Serializable {
 	private Integer id;
 	private Double rating;
 	private String comment;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;

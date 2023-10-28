@@ -28,8 +28,10 @@ public class Product implements Serializable {
 	@JsonManagedReference
 	@OneToMany(mappedBy = "product")
 	List<SchoolTool> schooltools;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product")
 	List<OrderDetail> orderdetails;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product")
 	List<Review> reviews;
 }

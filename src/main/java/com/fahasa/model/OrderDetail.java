@@ -2,6 +2,8 @@ package com.fahasa.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +26,11 @@ public class OrderDetail implements Serializable {
 	private Integer id;
 	private Integer quantity;
 	private Double price;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "orderid")
 	Order order;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;

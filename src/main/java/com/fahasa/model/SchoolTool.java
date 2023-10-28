@@ -35,7 +35,7 @@ public class SchoolTool implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;

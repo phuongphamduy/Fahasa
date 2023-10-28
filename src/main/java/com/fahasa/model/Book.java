@@ -33,7 +33,7 @@ public class Book implements Serializable {
 	private Integer discount;
 	private String description;
 	private String images;
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(mappedBy = "book")
 	List<Cat> cats;
 	@JsonBackReference

@@ -3,6 +3,8 @@ package com.fahasa.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -20,6 +22,7 @@ public class Role implements Serializable {
 	@Id
 	private String id;
 	private String name;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "role")
 	List<Authority> authorities;
 }

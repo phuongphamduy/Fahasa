@@ -2,6 +2,8 @@ package com.fahasa.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +24,11 @@ public class Authority implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "roleid")
 	Role role;

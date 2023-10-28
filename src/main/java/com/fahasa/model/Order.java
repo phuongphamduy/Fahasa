@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,15 +34,18 @@ public class Order implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date orderdate;
 	private Double totalamount;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
 	@OneToOne
 	@JoinColumn(name = "statussid")
 	Statuss statuss;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "voucherid")
 	Voucher voucher;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderdetails;
 }

@@ -3,6 +3,8 @@ package com.fahasa.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,10 +30,13 @@ public class User implements Serializable {
 	private String firstname;
 	private String lastname;
 	private String address;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	List<Authority> authorities;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	List<Order> orders;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	List<Review> reviews;
 }

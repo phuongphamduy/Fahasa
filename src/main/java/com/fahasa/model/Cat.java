@@ -25,10 +25,11 @@ public class Cat implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "bookid")
 	Book book;
