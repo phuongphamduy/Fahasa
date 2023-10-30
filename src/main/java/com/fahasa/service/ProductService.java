@@ -1,7 +1,10 @@
 package com.fahasa.service;
 
-import com.fahasa.model.Book;
+
+import java.util.List;
+
+import com.fahasa.model.Product;
 
 public interface ProductService {
-  
-}
+
+	List<Product> getAll();
