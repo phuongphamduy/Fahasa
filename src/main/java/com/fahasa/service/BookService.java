@@ -8,4 +8,5 @@ public interface BookService {
 
 	List<Book> getAll();
 
+	Book findById(Integer id);
 }
