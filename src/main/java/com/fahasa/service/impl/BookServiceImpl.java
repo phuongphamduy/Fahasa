@@ -19,4 +19,10 @@ public class BookServiceImpl implements BookService {
 		return bdao.findAll();
 	}
 
+
+    @Override
+	public Book findById(Integer id) {
+		return bdao.findById(id).get();
+	}
+
 }

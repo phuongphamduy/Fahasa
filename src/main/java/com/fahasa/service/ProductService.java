@@ -1,5 +1,7 @@
 package com.fahasa.service;
 
-public interface ProductService {
+import com.fahasa.model.Book;
 
+public interface ProductService {
+  
 }
