@@ -25,4 +25,10 @@ public class BookServiceImpl implements BookService {
 		return bdao.findById(id).get();
 	}
 
+
+	// @Override
+	// public List<Book> findByName(String title) {
+	// 	return bdao.findByTitle(title);
+	// }
+
 }
