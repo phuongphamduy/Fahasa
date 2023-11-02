@@ -8,3 +8,4 @@ import com.fahasa.model.Product;
 public interface ProductService {
 
 	List<Product> getAll();
+}

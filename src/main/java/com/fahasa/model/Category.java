@@ -30,6 +30,7 @@ public class Category implements Serializable {
 	private Integer id;
 	private String categoryname;
 	private Integer level;
+	private String images;
 	@JsonManagedReference
 	@OneToMany(mappedBy = "category")
 	List<Cat> cats;
