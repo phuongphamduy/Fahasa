@@ -30,8 +30,8 @@ public class Voucher implements Serializable {
 	String code;
 	@Temporal(TemporalType.DATE)
 	Date expdate;
-	Integer valuev;
-	String condition;
+	Double valuev;
+	Double condition;
 	Boolean active;
 	Integer quantity;
 	@JsonManagedReference
