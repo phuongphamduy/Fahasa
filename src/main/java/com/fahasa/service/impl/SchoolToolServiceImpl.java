@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.SchoolToolDAO;
+import com.fahasa.model.Book;
 import com.fahasa.model.SchoolTool;
 import com.fahasa.service.SchoolToolService;
 
@@ -20,9 +21,7 @@ public class SchoolToolServiceImpl implements SchoolToolService {
 		return stdao.findAll();
 	}
 
-<<<<<<< Updated upstream
-=======
-	@Override
+	 @Override
 	public SchoolTool findById(Integer id) {
 		return stdao.findById(id).get();
 	}
@@ -37,5 +36,4 @@ public class SchoolToolServiceImpl implements SchoolToolService {
 		return stdao.findToolsByParentId3(id);
 	}
 
->>>>>>> Stashed changes
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,13 +30,15 @@ public class SchoolToolRestController {
 	}
 
 	@GetMapping("/search")
+
 	public List<SchoolTool> searchByName(@RequestParam String q) {
 		return Dao.findByTitleContaining(q);
-<<<<<<< Updated upstream
+
 	}
 
-=======
-	}
+    public List<SchoolTool> searchByName(@RequestParam String q) {
+        return Dao.findByTitleContaining(q);
+    }
 
 	@GetMapping("{id}")
 	public SchoolTool getProduct(@PathVariable("id") Integer id) {
@@ -51,5 +54,4 @@ public class SchoolToolRestController {
 	public List<SchoolTool> findBooksByCate3(@PathVariable("id") Integer id) {
 		return Dao.findToolsByParentId3(id);
 	}
->>>>>>> Stashed changes
 }
