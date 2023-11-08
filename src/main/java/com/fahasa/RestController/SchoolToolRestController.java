@@ -31,6 +31,25 @@ public class SchoolToolRestController {
 	@GetMapping("/search")
 	public List<SchoolTool> searchByName(@RequestParam String q) {
 		return Dao.findByTitleContaining(q);
+<<<<<<< Updated upstream
 	}
 
+=======
+	}
+
+	@GetMapping("{id}")
+	public SchoolTool getProduct(@PathVariable("id") Integer id) {
+		return service.findById(id);
+	}
+
+	@GetMapping("/cate2/{id}")
+	public List<SchoolTool> findBooksByCate2(@PathVariable("id") Integer id) {
+		return Dao.findToolsByParentId2(id);
+	}
+
+	@GetMapping("/cate3/{id}")
+	public List<SchoolTool> findBooksByCate3(@PathVariable("id") Integer id) {
+		return Dao.findToolsByParentId3(id);
+	}
+>>>>>>> Stashed changes
 }

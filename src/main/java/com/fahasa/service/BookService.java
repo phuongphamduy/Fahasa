@@ -10,5 +10,10 @@ public interface BookService {
 
 	Book findById(Integer id);
 
-	// List<Book> findByName(String title);
+	List<Book> findBooksByParentId(Integer id);
+
+	List<Book> findBooksByParentId2(Integer id);
+
+	List<Book> findBooksByParentId3(Integer id);
+
 }

@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class Book implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String title;
 	private String author;
 	private Double price;

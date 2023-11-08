@@ -13,5 +13,4 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
 
     // @Query("SELECT p FROM Product p WHERE" + "")
 
-  
 }
