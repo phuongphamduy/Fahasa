@@ -11,4 +11,8 @@ public interface SchoolToolService {
 
 	SchoolTool findById(Integer id);
 
+	List<SchoolTool> findToolsByParentId2(Integer id);
+
+	List<SchoolTool> findToolsByParentId3(Integer id);
+
 }

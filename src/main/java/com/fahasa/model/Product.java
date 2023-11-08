@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Product")
 public class Product implements Serializable {
 	@Id
-	Integer id;
+	Long id;
 	String name;
 	@JsonManagedReference
 	@OneToMany(mappedBy = "product")
