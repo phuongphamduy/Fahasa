@@ -30,15 +30,9 @@ public class SchoolToolRestController {
 	}
 
 	@GetMapping("/search")
-
 	public List<SchoolTool> searchByName(@RequestParam String q) {
 		return Dao.findByTitleContaining(q);
-
 	}
-
-    public List<SchoolTool> searchByName(@RequestParam String q) {
-        return Dao.findByTitleContaining(q);
-    }
 
 	@GetMapping("{id}")
 	public SchoolTool getProduct(@PathVariable("id") Integer id) {

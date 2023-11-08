@@ -40,14 +40,4 @@ public class BookServiceImpl implements BookService {
 		return bdao.findBooksByParentId3(id);
 	}
 
-	// @Override
-	// public List<Book> findBooksByParentId(Integer id) {
-	// return bdao.findBooksByParentId(id);
-	// }
-
-	// @Override
-	// public List<Book> findByName(String title) {
-	// return bdao.findByTitle(title);
-	// }
-
 }
