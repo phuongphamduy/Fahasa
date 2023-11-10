@@ -2,6 +2,7 @@ package com.fahasa.service;
 
 import java.util.List;
 
+import com.fahasa.model.Book;
 import com.fahasa.model.SchoolTool;
 
 public interface SchoolToolService {
@@ -14,4 +15,5 @@ public interface SchoolToolService {
 
 	List<SchoolTool> findToolsByParentId3(Integer id);
 
+	SchoolTool create(SchoolTool schoolTool);
 }

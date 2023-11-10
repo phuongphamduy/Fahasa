@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.SchoolToolDAO;
+import com.fahasa.model.Book;
 import com.fahasa.model.SchoolTool;
 import com.fahasa.service.SchoolToolService;
 
@@ -33,6 +34,11 @@ public class SchoolToolServiceImpl implements SchoolToolService {
 	@Override
 	public List<SchoolTool> findToolsByParentId3(Integer id) {
 		return stdao.findToolsByParentId3(id);
+	}
+
+	@Override
+	public SchoolTool create(SchoolTool schoolTool) {
+		return stdao.save(schoolTool);
 	}
 
 }

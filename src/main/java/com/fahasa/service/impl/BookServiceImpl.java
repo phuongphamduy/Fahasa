@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.BookDAO;
 import com.fahasa.model.Book;
+import com.fahasa.model.Product;
 import com.fahasa.service.BookService;
 
 @Service
@@ -38,6 +39,22 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> findBooksByParentId3(Integer id) {
 		return bdao.findBooksByParentId3(id);
+	}
+
+	@Override
+	public Book create(Book book) {
+		return bdao.save(book);
+	}
+
+	@Override
+	public Book update(Book book) {
+		return bdao.save(book);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		bdao.deleteById(id);
+		
 	}
 
 }
