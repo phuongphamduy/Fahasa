@@ -26,11 +26,11 @@ public class OrderDetail implements Serializable {
 	private Integer id;
 	private Integer quantity;
 	private Double price;
-	@JsonBackReference
+	@JsonBackReference(value = "orderdetail-order")
 	@ManyToOne
 	@JoinColumn(name = "orderid")
 	Order order;
-	@JsonBackReference
+	@JsonBackReference(value = "orderdetail-product")
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;

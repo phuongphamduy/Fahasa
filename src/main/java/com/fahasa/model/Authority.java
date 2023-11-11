@@ -24,11 +24,11 @@ public class Authority implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@JsonBackReference
+	@JsonBackReference(value = "authority-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
-	@JsonBackReference
+	@JsonBackReference(value = "authority-role")
 	@ManyToOne
 	@JoinColumn(name = "roleid")
 	Role role;

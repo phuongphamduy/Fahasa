@@ -29,10 +29,10 @@ public class Category implements Serializable {
 	private String categoryname;
 	private Integer level;
 	private String images;
-	@JsonManagedReference
+	@JsonManagedReference(value = "cat-category")
 	@OneToMany(mappedBy = "category")
 	List<Cat> cats;
-	@JsonManagedReference
+	@JsonManagedReference(value = "schooltool-category")
 	@OneToMany(mappedBy = "category")
 	List<SchoolTool> schooltools;
 	@ManyToOne

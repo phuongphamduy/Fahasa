@@ -26,11 +26,11 @@ public class Review implements Serializable {
 	private Integer id;
 	private Double rating;
 	private String comment;
-	@JsonBackReference
+	@JsonBackReference(value = "review-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
-	@JsonBackReference
+	@JsonBackReference(value = "review-product")
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;

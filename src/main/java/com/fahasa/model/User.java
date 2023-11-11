@@ -30,13 +30,13 @@ public class User implements Serializable {
 	private String firstname;
 	private String lastname;
 	private String address;
-	@JsonManagedReference
+	@JsonManagedReference(value = "authority-user")
 	@OneToMany(mappedBy = "user")
 	List<Authority> authorities;
-	@JsonManagedReference
+	@JsonManagedReference(value = "order-user")
 	@OneToMany(mappedBy = "user")
 	List<Order> orders;
-	@JsonManagedReference
+	@JsonManagedReference(value = "review-user")
 	@OneToMany(mappedBy = "user")
 	List<Review> reviews;
 }

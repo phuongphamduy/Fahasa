@@ -34,7 +34,7 @@ public class Voucher implements Serializable {
 	String condition;
 	Boolean active;
 	Integer quantity;
-	@JsonManagedReference
+	@JsonManagedReference(value = "order-voucher")
 	@OneToMany(mappedBy = "voucher")
 	List<Order> orders;
 }

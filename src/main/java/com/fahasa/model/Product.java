@@ -22,16 +22,16 @@ public class Product implements Serializable {
 	@Id
 	Long id;
 	String name;
-	@JsonManagedReference
+	@JsonManagedReference(value = "book-product")
 	@OneToMany(mappedBy = "product")
 	List<Book> books;
-	@JsonManagedReference
+	@JsonManagedReference(value = "schooltool-product")
 	@OneToMany(mappedBy = "product")
 	List<SchoolTool> schooltools;
-	@JsonManagedReference
+	@JsonManagedReference(value = "orderdetail-product")
 	@OneToMany(mappedBy = "product")
 	List<OrderDetail> orderdetails;
-	@JsonManagedReference
+	@JsonManagedReference(value = "review-product")
 	@OneToMany(mappedBy = "product")
 	List<Review> reviews;
 }
