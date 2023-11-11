@@ -34,18 +34,18 @@ public class Order implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date orderdate;
 	private Double totalamount;
-	@JsonBackReference
+	@JsonBackReference(value = "order-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	User user;
 	@OneToOne
 	@JoinColumn(name = "statussid")
 	Statuss statuss;
-	@JsonBackReference
+	@JsonBackReference(value = "order-voucher")
 	@ManyToOne
 	@JoinColumn(name = "voucherid")
 	Voucher voucher;
-	@JsonManagedReference
+	@JsonManagedReference(value = "orderdetail-order")
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderdetails;
 }

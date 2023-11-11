@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.BookDAO;
 import com.fahasa.model.Book;
+import com.fahasa.model.Product;
 import com.fahasa.service.BookService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -40,14 +43,29 @@ public class BookServiceImpl implements BookService {
 		return bdao.findBooksByParentId3(id);
 	}
 
-	// @Override
-	// public List<Book> findBooksByParentId(Integer id) {
-	// return bdao.findBooksByParentId(id);
-	// }
+//	@Override
+//	public Book create(Book book) {
+//		return bdao.save(book);
+//	}
 
-	// @Override
-	// public List<Book> findByName(String title) {
-	// return bdao.findByTitle(title);
-	// }
+	@Override
+	public Book update(Book book) {
+		return bdao.save(book);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		bdao.deleteById(id);
+		
+	}
+
+	@Override
+	public Book create(JsonNode book) {
+		System.out.println(book);
+		ObjectMapper mapper = new ObjectMapper();
+		Book b = mapper.convertValue(book, Book.class);
+		bdao.save(b);
+		return null;
+	}
 
 }

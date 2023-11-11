@@ -30,11 +30,11 @@ public class SchoolTool implements Serializable {
 	Integer discount;
 	String description;
 	String images;
-	@JsonBackReference
+	@JsonBackReference(value = "schooltool-product")
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
-	@JsonBackReference
+	@JsonBackReference(value = "schooltool-category")
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;

@@ -22,7 +22,7 @@ public class Role implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	@JsonManagedReference
+	@JsonManagedReference(value = "authority-role")
 	@OneToMany(mappedBy = "role")
 	List<Authority> authorities;
 }

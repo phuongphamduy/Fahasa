@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,10 +34,10 @@ public class Book implements Serializable {
 	private Integer discount;
 	private String description;
 	private String images;
-	@JsonManagedReference
-	@OneToMany(mappedBy = "book")
+	@JsonManagedReference(value = "cat-book")
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	List<Cat> cats;
-	@JsonBackReference
+	@JsonBackReference(value = "book-product")
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;

@@ -21,7 +21,7 @@ public class SchoolToolServiceImpl implements SchoolToolService {
 		return stdao.findAll();
 	}
 
-	 @Override
+	@Override
 	public SchoolTool findById(Integer id) {
 		return stdao.findById(id).get();
 	}
@@ -34,6 +34,11 @@ public class SchoolToolServiceImpl implements SchoolToolService {
 	@Override
 	public List<SchoolTool> findToolsByParentId3(Integer id) {
 		return stdao.findToolsByParentId3(id);
+	}
+
+	@Override
+	public SchoolTool create(SchoolTool schoolTool) {
+		return stdao.save(schoolTool);
 	}
 
 }
