@@ -21,14 +21,15 @@ import com.fahasa.dao.BookDAO;
 import com.fahasa.model.Book;
 import com.fahasa.model.Product;
 import com.fahasa.service.BookService;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
 @RestController
-// @RequestMapping("/rest/book")
-@RequestMapping(value = "/rest/book", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json;charset=ISO-8859-1")
+@RequestMapping("/rest/book")
+//@RequestMapping(value = "/rest/book", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json;charset=ISO-8859-1")
 public class BookRestController {
 
 	@Autowired
@@ -36,7 +37,7 @@ public class BookRestController {
 	@Autowired
 	private BookDAO BookDAO;
 
-	@GetMapping()
+	@GetMapping("/getAll")
 	public List<Book> main() {
 		return service.getAll();
 	}
@@ -66,9 +67,14 @@ public class BookRestController {
 		return BookDAO.findBooksByParentId3(id);
 	}
 
-	@PostMapping(headers = "Content-Type=application/json;charset=UTF-8", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Book create(@RequestBody Book book) {
-		return service.create(book);
+//	@PostMapping(headers = "Content-Type=application/json;charset=UTF-8", consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public Book create(@RequestBody Book book) {
+//		return service.create(book);
+//	}
+	
+	@PostMapping()
+	public void create(@RequestBody JsonNode book) {
+		service.create(book);
 	}
 
 	@PutMapping("{id}")

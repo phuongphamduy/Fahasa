@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fahasa.model.Book;
 import com.fahasa.model.Product;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public interface BookService {
 
@@ -17,7 +18,7 @@ public interface BookService {
 
 	List<Book> findBooksByParentId3(Integer id);
 
-	Book create(Book book);
+	Book create(JsonNode book);
 
 	Book update(Book product);
 
