@@ -37,7 +37,7 @@ public class BookRestController {
 	@Autowired
 	private BookDAO BookDAO;
 
-	@GetMapping("/getAll")
+	@GetMapping
 	public List<Book> main() {
 		return service.getAll();
 	}
@@ -78,13 +78,15 @@ public class BookRestController {
 	}
 
 	@PutMapping("{id}")
-	public Book update(@PathVariable("id") Integer id, @RequestBody Book Book) {
-		return service.update(Book);
+	public ResponseEntity<String> update(@PathVariable("id") Integer id, @RequestBody Book book) {
+		service.update(id,book);
+
+		return ResponseEntity.ok("Product updated successfully");
 	}
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Integer id) {
-		service.delete(id);
+		 service.delete(id);
 	}
 
 

@@ -20,7 +20,7 @@ public interface BookService {
 
 	Book create(JsonNode book);
 
-	Book update(Book product);
+	Book update(Integer id,Book book);
 
 	void delete(Integer id);
 
