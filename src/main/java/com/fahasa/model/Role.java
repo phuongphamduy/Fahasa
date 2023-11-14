@@ -13,16 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "Roles")
-public class Role implements Serializable {
-	@Id
-	private String id;
-	private String name;
-	@JsonManagedReference
-	@OneToMany(mappedBy = "role")
-	List<Authority> authorities;
+public enum Role {
+
+	USER,
+	ADMIN
 }

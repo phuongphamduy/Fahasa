@@ -15,22 +15,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "Authorities")
-public class Authority implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "userid")
-	User user;
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "roleid")
-	Role role;
-	
-}
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Entity
+//@Table(name = "Authorities")
+//public class Authority implements Serializable{
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer id;
+//	@JsonBackReference
+//	@ManyToOne
+//	@JoinColumn(name = "userid")
+//	User user;
+//	@JsonBackReference
+//	@ManyToOne
+//	@JoinColumn(name = "roleid")
+//	Role role;
+//
+//}
