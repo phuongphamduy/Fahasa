@@ -49,8 +49,25 @@ public class BookServiceImpl implements BookService {
 //	}
 
 	@Override
-	public Book update(Book book) {
-		return bdao.save(book);
+	public Book update(Integer id ,Book book) {
+		// return bdao.save(id,book);
+		Book existingProduct = bdao.findById(id).orElse(null);
+
+        if (existingProduct != null) {
+            existingProduct.setTitle(book.getTitle());
+			existingProduct.setAuthor(book.getAuthor());
+			existingProduct.setImages(book.getImages());
+            existingProduct.setPrice(book.getPrice());
+			existingProduct.setDiscount(book.getDiscount());
+			existingProduct.setDescription(book.getDescription());
+			existingProduct.setCats(book.getCats());
+            // Lưu sản phẩm đã cập nhật vào cơ sở dữ liệu
+            bdao.save(existingProduct);
+        } else {
+            // Xử lý khi không tìm thấy sản phẩm với ID đã cho
+            // Có thể ném một ngoại lệ hoặc thực hiện các hành động phù hợp khác
+        }
+		return existingProduct;
 	}
 
 	@Override
