@@ -3,7 +3,6 @@ package com.fahasa.model;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +24,11 @@ public class Cat implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	@JsonBackReference
+	@JsonBackReference(value = "cat-category")
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;
-	@JsonBackReference
+	@JsonBackReference(value = "cat-book")
 	@ManyToOne
 	@JoinColumn(name = "bookid")
 	Book book;

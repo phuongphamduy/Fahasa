@@ -3,7 +3,6 @@ package com.fahasa.model;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,11 +30,11 @@ public class SchoolTool implements Serializable {
 	Integer discount;
 	String description;
 	String images;
-	@JsonBackReference
+	@JsonBackReference(value = "schooltool-product")
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
-	@JsonBackReference
+	@JsonBackReference(value = "schooltool-category")
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;
