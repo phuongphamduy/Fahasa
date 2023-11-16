@@ -1,8 +1,8 @@
-package com.fahasa.dao;
+// package com.fahasa.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
 
-//public interface AuthorityDAO extends JpaRepository<Authority, Integer> {
-//
-//}
+// //public interface AuthorityDAO extends JpaRepository<Authority, Integer> {
+// //
+// //}
