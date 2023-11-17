@@ -1,4 +1,4 @@
-package com.fahasa.model;
+	package com.fahasa.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +34,7 @@ public class Order implements Serializable{
 	private Integer id;
 	@Temporal(TemporalType.DATE)
 	private Date orderdate;
-	private Double totalamount;
+	private Double totalamount;	
 	@JsonBackReference(value = "order-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")
@@ -46,6 +47,6 @@ public class Order implements Serializable{
 	@JoinColumn(name = "voucherid")
 	Voucher voucher;
 	@JsonManagedReference(value = "orderdetail-order")
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	List<OrderDetail> orderdetails;
 }
