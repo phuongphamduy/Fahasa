@@ -34,6 +34,12 @@ public class User implements UserDetails {
 	private String firstname;
 	private String lastname;
 	private String address;
+	private String otp;
+	
+	 // Thêm annotation JsonManagedReference để giải quyết vấn đề vòng lặp tham chiếu trong JSON
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
