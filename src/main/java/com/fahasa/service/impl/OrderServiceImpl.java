@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 		ObjectMapper mapper = new ObjectMapper();
 		Order o = mapper.convertValue(order, Order.class);
 		Order orderFromDB = odao.getOrderInCartByUser(o.getUser().getId());
-		if(orderFromDB.getId() > 0) {
+		if(orderFromDB != null) {
 			List<OrderDetail> list = o.getOrderdetails();
 			List<OrderDetail> orderDetailFromDB = ddao.getOrderDetailByOrderId(orderFromDB.getId());
 			// lưu orderdetail
@@ -56,8 +56,6 @@ public class OrderServiceImpl implements OrderService {
 					ddao.save(od1);
 				}
 			}
-			
-			orderFromDB.setTotalamount(o.getTotalamount() + orderFromDB.getTotalamount());
 			return odao.save(orderFromDB);
 		}
 		return odao.save(o);
