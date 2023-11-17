@@ -38,5 +38,7 @@ public class Category implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "parentid")
 	Category parent;
+	@OneToMany(mappedBy = "category")
+	List<SchoolTool> schoolTools;
 
 }

@@ -19,4 +19,7 @@ public interface SchoolToolDAO extends JpaRepository<SchoolTool, Integer> {
     @Query("SELECT s FROM SchoolTool s " +
             "WHERE s.category.id = :id")
     List<SchoolTool> findToolsByParentId3(@Param("id") Integer id);
+
+    @Query("select s,s.category.id from SchoolTool s")
+    List<Object[]> SchoolToolCate();
 }

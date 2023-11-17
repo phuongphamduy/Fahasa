@@ -3,17 +3,10 @@ package com.fahasa.RestController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.fahasa.dao.SchoolToolDAO;
-import com.fahasa.model.Book;
 import com.fahasa.model.SchoolTool;
 import com.fahasa.service.SchoolToolService;
 
@@ -55,5 +48,21 @@ public class SchoolToolRestController {
 	@PostMapping(consumes={"application/json"})
 	public SchoolTool create(@RequestBody SchoolTool schoolTool) {
 		return service.create(schoolTool);
+	}
+
+	@PutMapping("{id}")
+	public ResponseEntity<String> update(@PathVariable("id") Integer id, @RequestBody SchoolTool tool) {
+		service.update(id,tool);
+		return ResponseEntity.ok("Product updated successfully");
+	}
+
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable("id") Integer id) {
+		service.delete(id);
+	}
+
+	@GetMapping("test")
+	public List<Object[]> test(){
+		return Dao.SchoolToolCate();
 	}
 }
