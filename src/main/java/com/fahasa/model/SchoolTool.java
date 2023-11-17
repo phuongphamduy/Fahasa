@@ -1,8 +1,10 @@
 package com.fahasa.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,4 +41,8 @@ public class SchoolTool implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	Category category;
+	@JsonManagedReference(value = "orderdetail-schooltool")
+	@OneToMany(mappedBy = "schooltool")
+	List<OrderDetail> orderdetails;
+	
 }
