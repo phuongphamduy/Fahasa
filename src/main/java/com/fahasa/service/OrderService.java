@@ -14,4 +14,6 @@ public interface OrderService {
 
 	Order getOrderInCart(Integer id);
 
+	Order payment(JsonNode data);
+
 }
