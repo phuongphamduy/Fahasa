@@ -80,7 +80,7 @@ public class ForgotPasswordController {
         String myOtp = (String)session.getAttribute("myotp");
         String email = (String) session.getAttribute("email");
 
-        if (myOtp == otp) {
+        if (myOtp.equals(otp)) {
             User user = this.userRepository.getUserByUserName(email);
             if (user == null) {
                 response.put("status", "error");
