@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.fahasa.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/admin/users")
 @RequiredArgsConstructor
@@ -31,7 +33,7 @@ public class AdminUserController {
     
     @PutMapping("/update/{id}")
     public User updateUser(@RequestBody User user,@PathVariable Integer id) {
-    	return userService.updateUser(user, id);
+    	return userService.updateUserRole(user, id);
     }
     
     @DeleteMapping("/delete/{id}")

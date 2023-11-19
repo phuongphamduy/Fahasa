@@ -47,6 +47,15 @@ public class UserServiceImpl implements UserService{
 			return userRepository.save(u);
 		}).orElseThrow(() -> new UserNotFoundException("Xin lỗi, người dùng này không được tìm thấy"));
 	}
+	
+	@Override
+	public User updateUserRole(User user, Integer id) {
+	    return userRepository.findById(id).map(u -> {
+	        u.setRole(user.getRole());
+	        return userRepository.save(u);
+	    }).orElseThrow(() -> new UserNotFoundException("Xin lỗi, người dùng này không được tìm thấy"));
+	}
+	
 
 	@Override
 	public User getUserById(Integer id) {
