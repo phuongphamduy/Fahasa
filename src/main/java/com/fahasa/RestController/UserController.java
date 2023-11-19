@@ -1,7 +1,12 @@
 package com.fahasa.RestController;
 
 import com.fahasa.model.User;
+import com.fahasa.service.UserService;
+
 import lombok.RequiredArgsConstructor;
+
+
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class UserController {
-
+	
+	
     @GetMapping
     public ResponseEntity<User> getUser() {
         // Lấy thông tin người dùng hiện tại từ Spring Security
@@ -23,4 +29,8 @@ public class UserController {
         // Trả về thông tin người dùng
         return ResponseEntity.ok(user);
     }
+    
+    
+    
+    
 }

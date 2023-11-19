@@ -1,5 +1,5 @@
-package com.fahasa.service;
-
-public interface AuthorityService {
-
-}
+//package com.fahasa.service;
+//
+//public interface AuthorityService {
+//
+//}
