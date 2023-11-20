@@ -41,4 +41,7 @@ public class Book implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
+	@JsonManagedReference(value = "orderdetail-book")
+	@OneToMany(mappedBy = "book")
+	List<OrderDetail> orderdetails;
 }
