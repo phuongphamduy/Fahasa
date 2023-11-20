@@ -1,5 +1,6 @@
 package com.fahasa.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.fahasa.dao.OrderDetailDAO;
 import com.fahasa.model.Order;
 import com.fahasa.model.OrderDetail;
 import com.fahasa.service.OrderService;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
@@ -70,6 +72,24 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order getOrderInCart(Integer id) {
 		Order o = odao.getOrderInCartByUser(id);
+		return o;
+	}
+
+	@Override
+	public Order payment(JsonNode data) {
+		List<OrderDetail> orderdetails = new ArrayList<OrderDetail>();
+		ObjectMapper mapper = new ObjectMapper();
+		Order order = mapper.convertValue(data, Order.class);
+		order.setOrderdetails(orderdetails);
+		Order o = odao.save(order);
+		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {};
+		List<OrderDetail> list = mapper.convertValue(data.get("orderdetails"), type);
+		for(OrderDetail od : list) {
+			System.out.println(od.getId());
+			System.out.println(o.getId());
+			od.setOrder(o);
+			ddao.save(od);
+		}
 		return o;
 	}
 

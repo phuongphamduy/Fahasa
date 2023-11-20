@@ -38,5 +38,10 @@ public class OrderRestController {
 	public Order create(@RequestBody JsonNode order) {
 		return service.create(order);
 	}
+	
+	@PostMapping("/payment")
+	public Order payment(@RequestBody JsonNode data) {
+		return service.payment(data);
+	}
 
 }

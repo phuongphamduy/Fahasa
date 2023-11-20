@@ -1,5 +1,7 @@
 package com.fahasa.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,19 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public void delete(Integer id) {
 		ddao.deleteById(id);
+	}
+
+	@Override
+	public List<Object[]> getProductInSuccessOrder(Integer id) {
+		List<Object[]> list = ddao.getBookInSuccessOrder(id);
+		List<Object[]> list1 = ddao.getSchoolToolInSuccessOrder(id);
+		list.addAll(list1);
+		return list;
+	}
+
+	@Override
+	public List<OrderDetail> getAll() {
+		return ddao.findAll();
 	}
 	
 	
