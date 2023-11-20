@@ -20,4 +20,5 @@ public interface UserService {
     void deleteUser(Integer id);
     
     User updateUserRole(User user, Integer id);
+
 }
