@@ -16,4 +16,8 @@ public interface SchoolToolService {
 	List<SchoolTool> findToolsByParentId3(Integer id);
 
 	SchoolTool create(SchoolTool schoolTool);
+
+	SchoolTool update(Integer id, SchoolTool tool);
+
+	void delete(Integer id);
 }

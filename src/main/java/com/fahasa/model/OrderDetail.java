@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,8 +31,12 @@ public class OrderDetail implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "orderid")
 	Order order;
-	@JsonBackReference(value = "orderdetail-product")
+	@JsonBackReference(value = "orderdetail-book")
 	@ManyToOne
-	@JoinColumn(name = "productid")
-	Product product;
+	@JoinColumn(name = "bookid")
+	Book book;
+	@JsonBackReference(value = "orderdetail-schooltool")
+	@ManyToOne
+	@JoinColumn(name = "schooltoolid")
+	SchoolTool schooltool;
 }
