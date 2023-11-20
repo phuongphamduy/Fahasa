@@ -39,14 +39,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-	@Override
-	public User updateUser(User user, Integer id) {
-		
-		return userRepository.findById(id).map(u -> {
-			u.setAuth(user.getAuth());
-			return userRepository.save(u);
-		}).orElseThrow(() -> new UserNotFoundException("Xin lỗi, người dùng này không được tìm thấy"));
-	}
+//	@Override
+//	public User updateUser(User user, Integer id) {
+//		
+//		return userRepository.findById(id).map(u -> {
+//			u.setAuth(user.getAuth());
+//			return userRepository.save(u);
+//		}).orElseThrow(() -> new UserNotFoundException("Xin lỗi, người dùng này không được tìm thấy"));
+//	}
 	
 	@Override
 	public User updateUserRole(User user, Integer id) {

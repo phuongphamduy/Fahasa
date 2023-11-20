@@ -13,7 +13,7 @@ public interface UserService {
     
     List<User> getUsers();
     
-    User updateUser(User user, Integer id);
+//    User updateUser(User user, Integer id);
     
     User getUserById(Integer id);
     
