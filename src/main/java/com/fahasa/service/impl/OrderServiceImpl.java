@@ -85,12 +85,15 @@ public class OrderServiceImpl implements OrderService {
 		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {};
 		List<OrderDetail> list = mapper.convertValue(data.get("orderdetails"), type);
 		for(OrderDetail od : list) {
-			System.out.println(od.getId());
-			System.out.println(o.getId());
 			od.setOrder(o);
 			ddao.save(od);
 		}
 		return o;
+	}
+
+	@Override
+	public List<Order> getOrderSuccess(Integer id) {
+		return odao.getOrderSuccess(id);
 	}
 
 }

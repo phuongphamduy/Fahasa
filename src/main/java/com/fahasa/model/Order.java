@@ -35,6 +35,8 @@ public class Order implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date orderdate;
 	private Double totalamount;	
+	private String receiver;
+	private Double ship;
 	@JsonBackReference(value = "order-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")

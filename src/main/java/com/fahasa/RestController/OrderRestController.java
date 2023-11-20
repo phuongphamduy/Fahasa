@@ -34,6 +34,11 @@ public class OrderRestController {
 		return service.getOrderInCart(id);
 	}
 	
+	@GetMapping("ordersuccess/{id}")
+	public List<Order> getOrderSuccess(@PathVariable("id") Integer id) {
+		return service.getOrderSuccess(id);
+	}
+	
 	@PostMapping("/create")
 	public Order create(@RequestBody JsonNode order) {
 		return service.create(order);
