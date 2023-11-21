@@ -96,4 +96,9 @@ public class OrderServiceImpl implements OrderService {
 		return odao.getOrderSuccess(id);
 	}
 
+	@Override
+	public Order findById(Integer id) {
+		return odao.findById(id).get();
+	}
+
 }
