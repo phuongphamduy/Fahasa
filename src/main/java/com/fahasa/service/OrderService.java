@@ -20,4 +20,6 @@ public interface OrderService {
 	
 	Order findById(Integer id);
 
+	void paymentSuccess(Integer id);
+
 }

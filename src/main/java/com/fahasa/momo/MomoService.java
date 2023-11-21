@@ -40,8 +40,8 @@ public class MomoService {
         
         String redirectUrl = "http://localhost:3000/success/" + order.getId();
 //        
-        String orderInfo = "Khách hàng: " + service.findById(order.getId()).getReceiver() + " thanh toán";
-        String amount = "100000"; // Xóa dấu phẩy
+        String orderInfo = "Khách hàng: " + service.findById(order.getId()).getReceiver();
+        String amount = order.getTotalamount().toString().substring(0 ,order.getTotalamount().toString().length() -2); // Xóa dấu phẩy
         String orderId = order.getId().toString() + order.getOrderdate().getTime();
         String requestId = java.util.UUID.randomUUID().toString();
         String extraData = "";
