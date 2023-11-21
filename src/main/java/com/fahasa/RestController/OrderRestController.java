@@ -48,5 +48,10 @@ public class OrderRestController {
 	public Order payment(@RequestBody JsonNode data) {
 		return service.payment(data);
 	}
+	
+	@PatchMapping("/payment/success/{id}")
+	public void paymentSuccess(@PathVariable("id") Integer id) {
+		service.paymentSuccess(id);
+	}
 
 }
