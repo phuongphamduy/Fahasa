@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fahasa.model.MomoResult;
@@ -31,19 +32,19 @@ public class MomoController {
 	OrderService service;
 
 	@GetMapping("/momo-pay/{id}")
-	public ResponseEntity<Void> momoPay(@PathVariable("id") Integer id)
+	@ResponseBody
+	public String momoPay(@PathVariable("id") Integer id)
 			throws NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
 		Order sessionOrder = service.findById(id);
 
 		MomoResponse response = momoService.createMomoPayment(sessionOrder);
 
-		System.out.println(response.getPayUrl());
-
-		return ResponseEntity.status(HttpStatus.FOUND).header("Location", response.getPayUrl()).build();
+		return response.getPayUrl();
 	}
 
 	@GetMapping("momo-result")
-	public String result(@RequestParam("partnerCode") String partnerCode, @RequestParam("orderId") String orderId,
+	@ResponseBody
+	public MomoResult result(@RequestParam("partnerCode") String partnerCode, @RequestParam("orderId") String orderId,
 			@RequestParam("requestId") String requestId, @RequestParam("amount") String amount,
 			@RequestParam("orderInfo") String orderInfo, @RequestParam("orderType") String orderType,
 			@RequestParam("transId") String transId, @RequestParam("resultCode") int resultCode,
@@ -65,6 +66,8 @@ public class MomoController {
 		result.setResponseTime(responseTime);
 		result.setExtraData(extraData);
 		result.setSignature(signature);
+		
+		System.out.println(result.getResultCode());
 
 //        Order order = orderService.getSessionOrder(session);
 //        if (order != null) {
@@ -85,6 +88,6 @@ public class MomoController {
 //        orderService.removeSessionOrder(session);
 
 		System.out.println("thanh toán thành công");
-		return "cart/paySuccess";
+		return result;
 	}
 }

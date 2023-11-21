@@ -42,7 +42,7 @@ public class MomoService {
 //        
         String orderInfo = "Khách hàng: " + service.findById(order.getId()).getReceiver() + " thanh toán";
         String amount = "100000"; // Xóa dấu phẩy
-        String orderId = order.getId().toString();
+        String orderId = order.getId().toString() + order.getOrderdate().getTime();
         String requestId = java.util.UUID.randomUUID().toString();
         String extraData = "";
         
