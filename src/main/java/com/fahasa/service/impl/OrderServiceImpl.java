@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	OrderDetailDAO ddao;
-	
+
 	@Autowired
 	StatussDAO sdao;
 
@@ -126,6 +126,7 @@ public class OrderServiceImpl implements OrderService {
 			return odao.save(order);
 		}
 		return null;
+	}
 
 	public Order findById(Integer id) {
 		return odao.findById(id).get();
