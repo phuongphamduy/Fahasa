@@ -1,5 +1,6 @@
 package com.fahasa.service.impl;
 
+import com.fahasa.dao.UserDAO;
 import com.fahasa.exception.UserNotFoundException;
 import com.fahasa.model.User;
 import com.fahasa.reponsitory.UserRepository;
@@ -7,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +19,9 @@ import com.fahasa.service.UserService;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	UserDAO dao;
 
     private final UserRepository userRepository;
 
@@ -75,6 +79,12 @@ public class UserServiceImpl implements UserService{
 	
 	private boolean userAlreadyExits(String email) {
 		return userRepository.findByEmail(email).isPresent();
+	}
+
+
+	@Override
+	public List<User> getAll() {
+		return dao.findAll();
 	}
 
     

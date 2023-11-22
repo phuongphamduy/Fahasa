@@ -41,6 +41,11 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
     
+    @GetMapping("/getAll")
+    public List<User> getAll() {
+    	return userService.getAll();
+    }
+    
 
 
 }
