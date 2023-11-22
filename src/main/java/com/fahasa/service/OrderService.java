@@ -17,5 +17,11 @@ public interface OrderService {
 	Order payment(JsonNode data);
 
 	List<Order> getOrderSuccess(Integer id);
+	
+	List<Order> getAllOrdersSuccess();
+	
+	Order getOrderById(Integer orderId);
+	
+	Order updateOrderStatus(Integer orderId, Integer statusId);
 
 }
