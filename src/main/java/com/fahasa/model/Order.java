@@ -1,4 +1,4 @@
-	package com.fahasa.model;
+package com.fahasa.model;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fahasa.model.Order;
+import com.fahasa.model.Statuss;
 import com.fahasa.service.OrderService;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -29,14 +30,21 @@ public class OrderRestController {
 		return service.getAll();
 	}
 	
+	@GetMapping("/ordersuccess")
+	public List<Order> getAllOrdersSuccess() {
+		List<Order> orders = service.getAllOrdersSuccess();
+	  return service.getAllOrdersSuccess();
+	}
+	
 	@GetMapping("/cart/{id}")
 	public Order getOrderInCart(@PathVariable("id") Integer id) {
-		return service.getOrderInCart(id);
+		    return service.getOrderInCart(id);
 	}
 	
 	@GetMapping("ordersuccess/{id}")
 	public List<Order> getOrderSuccess(@PathVariable("id") Integer id) {
-		return service.getOrderSuccess(id);
+		  
+		    return service.getOrderSuccess(id);
 	}
 	
 	@PostMapping("/create")
@@ -49,9 +57,18 @@ public class OrderRestController {
 		return service.payment(data);
 	}
 	
+
+	@PatchMapping("/updateStatus/{orderId}/{statusId}")
+    public Order updateOrderStatus(@PathVariable Integer orderId, @PathVariable Integer statusId) {
+        return service.updateOrderStatus(orderId, statusId);
+    }
+	
+	
+
 	@PatchMapping("/payment/success/{id}")
 	public void paymentSuccess(@PathVariable("id") Integer id) {
 		service.paymentSuccess(id);
 	}
+
 
 }
