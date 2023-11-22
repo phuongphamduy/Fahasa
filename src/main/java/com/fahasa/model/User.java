@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Data
 @Table(name = "Users")
@@ -29,7 +31,9 @@ public class User implements UserDetails {
 	private String lastname;
 	private String gender;
 	private String birthday;
-
+	@JsonManagedReference(value = "address-user")
+	@OneToMany(mappedBy = "user")
+	List<Address> listAddress;
 	public User( String phone, String email, String password, Role role, String firstname, String lastname, String gender, String birthday) {
 		this.phone = phone;
 		this.email = email;
