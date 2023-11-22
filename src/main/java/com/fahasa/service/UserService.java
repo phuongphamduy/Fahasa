@@ -21,4 +21,6 @@ public interface UserService {
     
     User updateUserRole(User user, Integer id);
 
+	List<User> getAll();
+
 }

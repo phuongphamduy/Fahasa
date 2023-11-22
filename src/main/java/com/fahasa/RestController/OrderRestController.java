@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,6 +69,11 @@ public class OrderRestController {
 	@PatchMapping("/payment/success/{id}")
 	public void paymentSuccess(@PathVariable("id") Integer id) {
 		service.paymentSuccess(id);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable("id") Integer id) {
+		service.delete(id);
 	}
 
 

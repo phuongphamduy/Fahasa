@@ -48,6 +48,10 @@ public class Order implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "voucherid")
 	Voucher voucher;
+	@JsonBackReference(value = "order-address")
+	@ManyToOne
+	@JoinColumn(name = "addressid")
+	Address address;
 	@JsonManagedReference(value = "orderdetail-order")
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	List<OrderDetail> orderdetails;

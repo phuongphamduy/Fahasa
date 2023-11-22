@@ -29,5 +29,6 @@ public interface OrderService {
 
 	void paymentSuccess(Integer id);
 
+	void delete(Integer id);
 
 }
