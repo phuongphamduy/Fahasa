@@ -114,4 +114,13 @@ public class OrderServiceImpl implements OrderService {
 		odao.save(o);
 	}
 
+	@Override
+	public void delete(Integer id) {
+		Order o = odao.findById(id).get();
+		if(o.getStatuss().getId() == 3) {
+			odao.delete(o);
+		}
+		
+	}
+
 }

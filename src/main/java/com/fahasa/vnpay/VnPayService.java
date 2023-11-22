@@ -34,12 +34,12 @@ public class VnPayService {
         String vnp_TmnCode = Config.vnp_TmnCode;
         String vnp_IpAddr = "127.0.0.1";
 
-        long amount = 1000000;
+        double amount = order.getTotalamount();
         Map<String, String> vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
-        vnp_Params.put("vnp_Amount", String.valueOf(amount));
+        vnp_Params.put("vnp_Amount", String.valueOf(amount).substring(0, String.valueOf(amount).length() - 2) + "00");
         vnp_Params.put("vnp_CurrCode", "VND");
         vnp_Params.put("vnp_BankCode", "NCB");
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
