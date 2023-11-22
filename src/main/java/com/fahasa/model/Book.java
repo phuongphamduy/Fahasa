@@ -25,23 +25,26 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Books")
 public class Book implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String title;
-	private String author;
-	private Double price;
-	private Integer discount;
-	private String description;
-	private String images;
-	@JsonManagedReference(value = "cat-book")
-	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	List<Cat> cats;
-	@JsonBackReference(value = "book-product")
-	@ManyToOne
-	@JoinColumn(name = "productid")
-	Product product;
-	@JsonManagedReference(value = "orderdetail-book")
-	@OneToMany(mappedBy = "book")
-	List<OrderDetail> orderdetails;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String title;
+    private String author;
+    private Double price;
+    private Integer discount;
+    private String description;
+    private String images;
+    @JsonManagedReference(value = "cat-book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    List<Cat> cats;
+    @JsonBackReference(value = "book-product")
+    @ManyToOne
+    @JoinColumn(name = "productid")
+    Product product;
+    @JsonManagedReference(value = "orderdetail-book")
+    @OneToMany(mappedBy = "book")
+    List<OrderDetail> orderdetails;
+    @JsonManagedReference(value = "favorite-book")
+    @OneToMany(mappedBy = "book")
+    List<Favorite> favorite;
 }

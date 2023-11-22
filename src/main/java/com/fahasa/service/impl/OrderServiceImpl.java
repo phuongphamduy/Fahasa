@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.OrderDAO;
 import com.fahasa.dao.OrderDetailDAO;
+import com.fahasa.dao.StatussDAO;
 import com.fahasa.model.Order;
 import com.fahasa.model.OrderDetail;
 import com.fahasa.model.Statuss;
@@ -25,6 +26,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	OrderDetailDAO ddao;
+	
+	@Autowired
+	StatussDAO sdao;
 
 	@Override
 	public Order create(JsonNode order) {
@@ -107,6 +111,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+
 	public Order getOrderById(Integer orderId) {
 		return odao.findById(orderId).orElse(null);
 	}
@@ -121,6 +126,18 @@ public class OrderServiceImpl implements OrderService {
 			return odao.save(order);
 		}
 		return null;
+
+	public Order findById(Integer id) {
+		return odao.findById(id).get();
+	}
+
+	@Override
+	public void paymentSuccess(Integer id) {
+		Order o = odao.findById(id).get();
+		Statuss statuss = sdao.findById(2).get();
+		o.setStatuss(statuss);
+		odao.save(o);
+
 	}
 
 }

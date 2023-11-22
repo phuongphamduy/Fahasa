@@ -24,25 +24,29 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "schooltools")
 public class SchoolTool implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String title;
-	String brand;
-	Double price;
-	Integer discount;
-	String description;
-	String images;
-	@JsonBackReference(value = "schooltool-product")
-	@ManyToOne
-	@JoinColumn(name = "productid")
-	Product product;
-	@JsonBackReference(value = "schooltool-category")
-	@ManyToOne
-	@JoinColumn(name = "categoryid")
-	Category category;
-	@JsonManagedReference(value = "orderdetail-schooltool")
-	@OneToMany(mappedBy = "schooltool")
-	List<OrderDetail> orderdetails;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    String title;
+    String brand;
+    Double price;
+    Integer discount;
+    String description;
+    String images;
+    @JsonBackReference(value = "schooltool-product")
+    @ManyToOne
+    @JoinColumn(name = "productid")
+    Product product;
+    @JsonBackReference(value = "schooltool-category")
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    Category category;
+    @JsonManagedReference(value = "orderdetail-schooltool")
+    @OneToMany(mappedBy = "schooltool")
+    List<OrderDetail> orderdetails;
+
+    @JsonManagedReference(value = "favorite-schooltool")
+    @OneToMany(mappedBy = "schooltool")
+    List<Favorite> favorite;
+    
 }

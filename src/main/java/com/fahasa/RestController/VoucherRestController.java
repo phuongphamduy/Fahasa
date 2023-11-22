@@ -37,12 +37,12 @@ public class VoucherRestController {
 	@Autowired
 	private VoucherDAO voucherDAO;
 	
-//	@GetMapping
-//	public List<Voucher> getVouchersStillValid() {
-//		return service.getVoucherStillValid();
-//	}
-	
 	@GetMapping
+	public List<Voucher> getVouchersStillValid() {
+		return service.getVoucherStillValid();
+	}
+	
+	@GetMapping("/getAll")
 	public List<Voucher> main(){
 		return service.getAll();
 	}

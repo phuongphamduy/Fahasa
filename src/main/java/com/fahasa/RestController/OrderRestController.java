@@ -57,11 +57,18 @@ public class OrderRestController {
 		return service.payment(data);
 	}
 	
+
 	@PatchMapping("/updateStatus/{orderId}/{statusId}")
     public Order updateOrderStatus(@PathVariable Integer orderId, @PathVariable Integer statusId) {
         return service.updateOrderStatus(orderId, statusId);
     }
 	
 	
+
+	@PatchMapping("/payment/success/{id}")
+	public void paymentSuccess(@PathVariable("id") Integer id) {
+		service.paymentSuccess(id);
+	}
+
 
 }
