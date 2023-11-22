@@ -18,6 +18,13 @@ public interface OrderService {
 
 	List<Order> getOrderSuccess(Integer id);
 	
+
+	List<Order> getAllOrdersSuccess();
+	
+	Order getOrderById(Integer orderId);
+	
+	Order updateOrderStatus(Integer orderId, Integer statusId);
+
 	Order findById(Integer id);
 
 	void paymentSuccess(Integer id);
