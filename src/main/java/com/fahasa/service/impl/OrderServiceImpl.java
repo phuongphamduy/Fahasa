@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fahasa.dao.AddressDAO;
 import com.fahasa.dao.OrderDAO;
 import com.fahasa.dao.OrderDetailDAO;
 import com.fahasa.dao.StatussDAO;
+import com.fahasa.model.Address;
 import com.fahasa.model.Order;
 import com.fahasa.model.OrderDetail;
 import com.fahasa.model.Statuss;
@@ -29,6 +31,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	StatussDAO sdao;
+	
+	@Autowired
+	AddressDAO adao;
 
 	@Override
 	public Order create(JsonNode order) {
@@ -92,8 +97,13 @@ public class OrderServiceImpl implements OrderService {
 	public Order payment(JsonNode data) {
 		List<OrderDetail> orderdetails = new ArrayList<OrderDetail>();
 		ObjectMapper mapper = new ObjectMapper();
+		Address address = mapper.convertValue(data.get("address"), Address.class);
 		Order order = mapper.convertValue(data, Order.class);
 		order.setOrderdetails(orderdetails);
+		if (address.getFirstname() != null) {
+			Address a = adao.save(address);
+			order.setAddress(a);
+		}
 		Order o = odao.save(order);
 		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {
 		};
