@@ -28,7 +28,4 @@ public class Product implements Serializable {
 	@JsonManagedReference(value = "schooltool-product")
 	@OneToMany(mappedBy = "product")
 	List<SchoolTool> schooltools;
-	@JsonManagedReference(value = "review-product")
-	@OneToMany(mappedBy = "product")
-	List<Review> reviews;
 }

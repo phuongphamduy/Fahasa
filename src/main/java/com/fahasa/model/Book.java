@@ -47,4 +47,7 @@ public class Book implements Serializable {
     @JsonManagedReference(value = "favorite-book")
     @OneToMany(mappedBy = "book")
     List<Favorite> favorite;
+    @JsonManagedReference(value = "review-book")
+    @OneToMany(mappedBy = "book")
+    List<Review> reviews;
 }

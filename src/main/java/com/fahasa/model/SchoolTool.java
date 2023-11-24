@@ -44,9 +44,11 @@ public class SchoolTool implements Serializable {
     @JsonManagedReference(value = "orderdetail-schooltool")
     @OneToMany(mappedBy = "schooltool")
     List<OrderDetail> orderdetails;
-
     @JsonManagedReference(value = "favorite-schooltool")
     @OneToMany(mappedBy = "schooltool")
     List<Favorite> favorite;
+    @JsonManagedReference(value = "review-schooltool")
+    @OneToMany(mappedBy = "schooltool")
+    List<Review> reviews;
     
 }
