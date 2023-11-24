@@ -7,6 +7,7 @@ import com.fahasa.dao.ReviewDAO;
 import com.fahasa.model.Review;
 import com.fahasa.service.ReviewService;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class ReviewServiceImpl implements ReviewService {
 	
@@ -15,8 +16,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Review send(JsonNode data) {
-		System.out.println(data);
-		return null;
+		ObjectMapper mapper = new ObjectMapper();
+		Review review = mapper.convertValue(data, Review.class);
+		return dao.save(review);
 	}
 
 }
