@@ -48,6 +48,10 @@ public class Order implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "voucherid")
 	Voucher voucher;
+	@JsonBackReference(value = "order-myvoucher")
+	@ManyToOne
+	@JoinColumn(name = "myvoucherid")
+	MyVoucher myvoucher;
 	@JsonBackReference(value = "order-address")
 	@ManyToOne
 	@JoinColumn(name = "addressid")
