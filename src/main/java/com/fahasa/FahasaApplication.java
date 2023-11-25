@@ -23,7 +23,8 @@ public class FahasaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		User adminAccount = userRepository.findByRole(Role.ADMIN);
-		if (null == adminAccount) {
+		
+		if (adminAccount == null) {
 			User user = new User();
 
 			user.setEmail("admin@gmail.com");
