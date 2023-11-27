@@ -1,5 +1,6 @@
 package com.fahasa.momo;
 
+import java.math.BigDecimal;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -41,7 +42,8 @@ public class MomoService {
         String redirectUrl = "http://localhost:3000/success/" + order.getId();
 //        
         String orderInfo = "Khách hàng: " + service.findById(order.getId()).getReceiver();
-        String amount = order.getTotalamount().toString().substring(0 ,order.getTotalamount().toString().length() -2); // Xóa dấu phẩy
+        System.out.println(new BigDecimal(order.getTotalamount()).toPlainString());
+        String amount = new BigDecimal(order.getTotalamount()).toPlainString(); // Xóa dấu phẩy
         String orderId = order.getId().toString() + order.getOrderdate().getTime();
         String requestId = java.util.UUID.randomUUID().toString();
         String extraData = "";
