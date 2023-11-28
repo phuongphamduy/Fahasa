@@ -40,7 +40,7 @@ public class Address implements Serializable {
 	@JsonBackReference(value = "address-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")
-	User user;
+	private User user;
 	@JsonManagedReference(value = "order-address")
 	@OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
 	List<Order> orders;
