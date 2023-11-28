@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fahasa.dao.AddressDAO;
+import com.fahasa.dao.MyVoucherDao;
 import com.fahasa.dao.OrderDAO;
 import com.fahasa.dao.OrderDetailDAO;
 import com.fahasa.dao.StatussDAO;
+import com.fahasa.dao.VoucherDAO;
 import com.fahasa.model.Address;
+import com.fahasa.model.MyVoucher;
 import com.fahasa.model.Order;
 import com.fahasa.model.OrderDetail;
 import com.fahasa.model.Statuss;
+import com.fahasa.model.Voucher;
 import com.fahasa.service.OrderService;
 import com.fahasa.service.VoucherService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -31,9 +35,15 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	StatussDAO sdao;
-	
+
 	@Autowired
 	AddressDAO adao;
+
+	@Autowired
+	VoucherDAO vdao;
+
+	@Autowired
+	MyVoucherDao myvdao;
 
 	@Override
 	public Order create(JsonNode order) {
@@ -99,6 +109,24 @@ public class OrderServiceImpl implements OrderService {
 		ObjectMapper mapper = new ObjectMapper();
 		Address address = mapper.convertValue(data.get("address"), Address.class);
 		Order order = mapper.convertValue(data, Order.class);
+
+		// cập nhật quantity của voucher
+		Voucher vtemp = mapper.convertValue(data.get("voucher"), Voucher.class);
+		if(vtemp != null) {
+			Voucher v = vdao.findById(vtemp.getId()).get();
+			v.setQuantity(v.getQuantity() - 1);
+			vdao.save(v);
+		}
+		
+		// cập nhật quantity của myvoucher
+		MyVoucher mvtemp = mapper.convertValue(data.get("myvoucher"), MyVoucher.class);
+		if(mvtemp != null) {
+			MyVoucher mv = myvdao.findById(mvtemp.getId()).get();
+			mv.setQuantity(mv.getQuantity() - 1);
+			myvdao.save(mv);
+		}
+		
+
 		order.setOrderdetails(orderdetails);
 		if (address.getFirstname() != null) {
 			Address a = adao.save(address);
@@ -154,10 +182,10 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void delete(Integer id) {
 		Order o = odao.findById(id).get();
-		if(o.getStatuss().getId() == 3) {
+		if (o.getStatuss().getId() == 3) {
 			odao.delete(o);
 		}
-		
+
 	}
 
 }
