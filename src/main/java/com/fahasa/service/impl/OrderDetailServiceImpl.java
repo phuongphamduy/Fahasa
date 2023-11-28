@@ -9,11 +9,18 @@ import com.fahasa.dao.OrderDetailDAO;
 import com.fahasa.model.OrderDetail;
 import com.fahasa.service.OrderDetailService;
 import com.fasterxml.jackson.databind.JsonNode;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 @Service
 public class OrderDetailServiceImpl implements OrderDetailService {
 	
 	@Autowired
 	OrderDetailDAO ddao;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
 	public OrderDetail updateQuantity(JsonNode data) {
@@ -28,9 +35,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return ddao.save(od);
 	}
 
+	@Transactional
 	@Override
 	public void delete(Integer id) {
-		ddao.deleteById(id);
+		OrderDetail dd = ddao.findById(id).get();
+		ddao.delete(dd);
+		entityManager.flush();
 	}
 
 	@Override
