@@ -9,7 +9,7 @@ public interface OrderDetailService {
 
 	OrderDetail updateQuantity(JsonNode data);
 
-	void delete(Integer id);
+	OrderDetail delete(Integer id);
 
 	List<Object[]> getProductInSuccessOrder(Integer id);
 

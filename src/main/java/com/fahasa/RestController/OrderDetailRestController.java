@@ -39,7 +39,7 @@ public class OrderDetailRestController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		service.delete(id);
+	public OrderDetail delete(@PathVariable("id") Integer id) {
+		return service.delete(id);
 	}
 }
