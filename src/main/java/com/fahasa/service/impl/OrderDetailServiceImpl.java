@@ -18,9 +18,6 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	
 	@Autowired
 	OrderDetailDAO ddao;
-	
-	@PersistenceContext
-	private EntityManager entityManager;
 
 	@Override
 	public OrderDetail updateQuantity(JsonNode data) {
@@ -34,13 +31,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		}
 		return ddao.save(od);
 	}
-
-	@Transactional
 	@Override
 	public void delete(Integer id) {
 		OrderDetail dd = ddao.findById(id).get();
 		ddao.delete(dd);
-		entityManager.flush();
 	}
 
 	@Override
