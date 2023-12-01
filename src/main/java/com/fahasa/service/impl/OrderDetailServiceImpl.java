@@ -32,9 +32,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return ddao.save(od);
 	}
 	@Override
-	public void delete(Integer id) {
+	public OrderDetail delete(Integer id) {
 		OrderDetail dd = ddao.findById(id).get();
 		ddao.delete(dd);
+		return dd;
 	}
 
 	@Override
