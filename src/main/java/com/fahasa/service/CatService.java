@@ -9,6 +9,8 @@ public interface CatService {
 
     Cat create(JsonNode cat);
 
+    List<Object[]> findAll();
+
 }
 
 
