@@ -26,5 +26,19 @@ public class CatServiceImpl implements CatService{
 		CDao.save(b);
 		return null;
 	}
+
+    // @Override
+    // public List<Cat> findAll() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    // }
+
+    @Override
+	public List<Object[]> findAll() {
+		List<Object[]> list = CDao.findAllCats();
+		// List<Object[]> list1 = fdao.getSchoolToolInSuccess(id);
+		list.addAll(list);
+		return list;
+	}
     
 }

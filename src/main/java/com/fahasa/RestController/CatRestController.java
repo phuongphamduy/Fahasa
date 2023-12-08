@@ -31,6 +31,11 @@ public class CatRestController {
 	public List<Cat> getAll() {
 		return service.getAll();
 	}
+
+	@GetMapping("/all")
+	public List<Object[]> getAllCats() {
+		return service.findAll();
+	}
     
     @PostMapping()
 	public void create(@RequestBody JsonNode cat) {
