@@ -70,9 +70,9 @@ public class OrderRestController {
 		service.paymentSuccess(id);
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		service.delete(id);
+	@PatchMapping("/delete/{id}")
+	public Order delete(@PathVariable("id") Integer id) {
+		return service.delete(id);
 	}
 
 
