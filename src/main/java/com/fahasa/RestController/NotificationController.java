@@ -57,6 +57,7 @@ public class NotificationController {
             notification.setContent(newNotification.getContent());
             notification.setNotificationDate(new Date());
             notification.setUser(user);
+            notification.setIdUsers(user.getId());
             notification.setUserEmail(user.getEmail());
 
             notification.setTypeNotify(typeNotify);
@@ -77,6 +78,7 @@ public class NotificationController {
 
         if (user != null) {
             newNotification.setUser(user);
+            newNotification.setIdUsers(user.getId());
             newNotification.setUserEmail(user.getEmail());
             newNotification.setNotificationDate(new Date());
 

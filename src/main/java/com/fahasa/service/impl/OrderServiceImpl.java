@@ -194,9 +194,13 @@ public class OrderServiceImpl implements OrderService {
 			notification.setContent("Đơn hàng #" + id + " của bạn đã bị hủy.");
 			notification.setNotificationDate(new Date());
 			notification.setUser(order.getUser()); // Đặt user cho thông báo
+			notification.setIdUsers(order.getUser().getId()); // Đặt idUsers cho thông báo
 			notification.setTypeNotify(typeNotify);
 
 			notificationService.create(notification); // Tạo thông báo
+
+			// Cập nhật idUsers tại đây
+			order.getUser().setIdUsers(order.getUser().getId());
 
 			return order;
 		}

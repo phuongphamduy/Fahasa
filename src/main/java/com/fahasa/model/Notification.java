@@ -27,6 +27,8 @@ public class Notification {
 
     private String userEmail;
 
+    private Integer idUsers;
+
     @ManyToOne
     @JoinColumn(name = "typeNotifyId")
     private TypeNotify typeNotify;
@@ -35,4 +37,18 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "userid")
     private User user;
+
+    public Integer getIdUsers() {
+        return this.user != null ? this.user.getId() : null;
+    }
+
+    public void setIdUsers(Integer idUsers) {
+        this.idUsers = idUsers;
+    }
+
+    // Cập nhật setter cho user để đồng bộ idUsers khi gán user mới
+    public void setUser(User user) {
+        this.user = user;
+        this.idUsers = user != null ? user.getId() : null;
+    }
 }
