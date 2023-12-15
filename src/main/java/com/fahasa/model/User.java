@@ -38,6 +38,9 @@ public class User implements UserDetails {
 	@JsonManagedReference(value = "review-user")
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	List<Review> reviews;
+	@JsonManagedReference(value = "notification-user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	List<Notification> notifications;
 	public User( String phone, String email, String password, Role role, String firstname, String lastname, String gender, String birthday, List<Address> listAddress) {
 		this.phone = phone;
 		this.email = email;

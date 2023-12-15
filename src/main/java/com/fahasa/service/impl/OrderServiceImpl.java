@@ -1,23 +1,15 @@
 package com.fahasa.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.fahasa.dao.*;
+import com.fahasa.model.*;
+import com.fahasa.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fahasa.dao.AddressDAO;
-import com.fahasa.dao.MyVoucherDao;
-import com.fahasa.dao.OrderDAO;
-import com.fahasa.dao.OrderDetailDAO;
-import com.fahasa.dao.StatussDAO;
-import com.fahasa.dao.VoucherDAO;
-import com.fahasa.model.Address;
-import com.fahasa.model.MyVoucher;
-import com.fahasa.model.Order;
-import com.fahasa.model.OrderDetail;
-import com.fahasa.model.Statuss;
-import com.fahasa.model.Voucher;
 import com.fahasa.service.OrderService;
 import com.fahasa.service.VoucherService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -44,6 +36,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	MyVoucherDao myvdao;
+
+	@Autowired
+	NotificationService notificationService;
+
+	@Autowired
+	TypeNotifyDAO typeNotifyDAO;
 
 	@Override
 	public Order create(JsonNode order) {
@@ -181,13 +179,29 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order delete(Integer id) {
-		Order o = odao.findById(id).get();
-		if (o.getStatuss().getId() == 3) {
-			Statuss status = sdao.findById(4).get();
-			o.setStatuss(status);
-			return o;
+		Order order = odao.findById(id).orElse(null);
+
+		if (order != null && order.getStatuss().getId() == 3) {
+			Statuss status = sdao.findById(4).orElse(null);
+			order.setStatuss(status);
+
+			// Lấy thông tin TypeNotify có id là 2
+			TypeNotify typeNotify = typeNotifyDAO.findById(2L).orElse(null);
+
+			// Tạo thông báo ở đây
+			Notification notification = new Notification();
+			notification.setTitle("Đơn hàng đã bị hủy");
+			notification.setContent("Đơn hàng #" + id + " của bạn đã bị hủy.");
+			notification.setNotificationDate(new Date());
+			notification.setUser(order.getUser()); // Đặt user cho thông báo
+			notification.setTypeNotify(typeNotify);
+
+			notificationService.create(notification); // Tạo thông báo
+
+			return order;
 		}
-		return o;
+
+		return null;
 
 	}
 
