@@ -109,6 +109,7 @@ public class NotificationController {
 
         if (existingNotification != null) {
             updatedNotification.setId(id);
+            existingNotification.setNotificationDate(new Date());
             Notification updated = notificationService.update(updatedNotification);
 
             MessageResponse response = new MessageResponse(true, "Notification with ID " + id + " updated successfully");
