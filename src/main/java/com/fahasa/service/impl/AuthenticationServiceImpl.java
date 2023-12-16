@@ -30,6 +30,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JWTService jwtService;
 
     public User signup(SignUpRequest signUpRequest) {
+
+        String email = signUpRequest.getEmail();
+        String phone = signUpRequest.getPhone();
+
+        // Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+        if (userRepository.findByEmail(email).isPresent()) {
+            // Nếu email đã tồn tại, bạn có thể xử lý theo mong muốn của bạn, ví dụ:
+            throw new IllegalArgumentException("Email đã tồn tại");
+        }
+
+        // Kiểm tra xem số điện thoại đã tồn tại trong cơ sở dữ liệu hay chưa
+        if (userRepository.findByPhone(phone).isPresent()) {
+            throw new IllegalArgumentException("Số điện thoại đã tồn tại");
+        }
+
+        // Nếu email chưa tồn tại, tiến hành tạo người dùng mới
         User user = new User();
 
         user.setEmail(signUpRequest.getEmail());
